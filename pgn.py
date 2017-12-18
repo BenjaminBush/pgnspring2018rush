@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template, request, session, url_for, redirect, jsonify
 import json
-from flask.ext.pymongo import PyMongo
 
 pgn = Flask(__name__)
 
