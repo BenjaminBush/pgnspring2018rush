@@ -9,7 +9,7 @@ pgn = Flask(__name__)
 # mongo = PyMongo(muchsentiment)
 
 # Just do all of the routing in here
-@muchsentiment.route('/')
+@pgn.route('/')
 def main():
   return redirect('/index')
 
