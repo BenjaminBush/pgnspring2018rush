@@ -3,17 +3,12 @@ import json
 
 pgn = Flask(__name__)
 
-# muchsentiment.config['MONGO_DBNAME'] = 'prod'
-# muchsentiment.config['MONGO_URI'] = 'mongodb://ec2-52-38-154-245.us-west-2.compute.amazonaws.com:27017/prod'
-
-# mongo = PyMongo(muchsentiment)
-
 # Just do all of the routing in here
 @pgn.route('/')
 def main():
   return redirect('/index')
 
-@muchsentiment.route('/index')
+@pgn.route('/index')
 def index():
     return render_template('index.html')
 
