@@ -17,7 +17,7 @@
                     }
                 }
             },
-             last_name: {
+            last_name: {
                 validators: {
                      stringLength: {
                         min: 1,
@@ -34,6 +34,17 @@
                     },
                     emailAddress: {
                         message: 'Please supply a valid email address'
+                    }
+                }
+            },
+            student_id: {
+                validators: {
+                     stringLength: {
+                        min: 6,
+                        max: 6,
+                    },
+                    notEmpty: {
+                        message: 'Please supply your 6-digit Student ID'
                     }
                 }
             },
