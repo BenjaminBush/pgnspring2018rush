@@ -12,5 +12,11 @@ def main():
 def index():
     return render_template('index.html')
 
+@pgn.route('/register', methods=['POST'])
+def register():
+	if request.method == 'POST':
+		first_name = request.form['first_name']
+	return render_template('success.html', name=first_name)
+
 if __name__ == '__main__':
   pgn.run(debug=True)
