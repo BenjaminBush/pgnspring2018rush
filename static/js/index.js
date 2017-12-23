@@ -20,7 +20,7 @@
              last_name: {
                 validators: {
                      stringLength: {
-                        min: 2,
+                        min: 1,
                     },
                     notEmpty: {
                         message: 'Please supply your last name'
@@ -90,7 +90,6 @@
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
-
             $.post($form.attr('action'), $form.serialize(), function(result) {
                 console.log(result);
             }, 'json');
