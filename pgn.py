@@ -16,7 +16,16 @@ def index():
 def register():
 	if request.method == 'POST':
 		first_name = request.form['first_name']
-	return render_template('success.html', name=first_name)
+		last_name = request.form['last_name']
+		email = request.form['email']
+		student_id = request.form['student_id']
+		phone = request.form['phone']
+		year = request.form['year']
+		school = request.form['school']
+		comment = request.form['comment']
+	return render_template('success.html', first_name=first_name,
+		last_name=last_name, email=email, student_id=student_id,
+		phone=phone, year=year, school=school, comment=comment)
 
 if __name__ == '__main__':
   pgn.run(debug=True)
