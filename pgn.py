@@ -1,6 +1,9 @@
 from flask import Flask, redirect, render_template, request, session, url_for, redirect, jsonify
 import json
 import requests, psycopg2, base64, datetime
+import gspread
+from oauth2client.client import SignedJwtAssertionCredentials
+ 
 
 pgn = Flask(__name__)
 
@@ -55,9 +58,17 @@ def register():
 
 		cur.close()
 
-	return render_template('success.html', first_name=first_name,
-		last_name=last_name, email=email, student_id=student_id,
-		phone=phone, year=year, school=school, comment=comment)
+	json_key = json.load(open('creds.json'))
+	scope = ['https://spreadsheets.google.com/feeds']
+	credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['private_key'].encode(), scope) # get email and key from creds
+
+	file = gspread.authorize(credentials) # authenticate with Google
+	sheet = file.open("dbtest").sheet1 # open sheet
+	values = [first_name, last_name, email, student_id, phone, year, school, comment]
+	sheet.resize(1)
+	sheet.append_row(values);
+
+	return render_template('success.html', values=values)
 
 if __name__ == '__main__':
   pgn.run(debug=True)
